@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
+using System.IO;
 
 namespace lab8.Models
 {
@@ -45,12 +46,15 @@ namespace lab8.Models
 
         public void setImage(string path)
         {
+            if (!File.Exists(path)) return;
             Path = path;
             Image = new Bitmap(path);
         }
         public Note()
         {
             header = "Новая заметка";
+            Task = "";
+            Path = "";
         }
     }
 }
